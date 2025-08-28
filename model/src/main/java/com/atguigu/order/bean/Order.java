@@ -1,5 +1,6 @@
 package com.atguigu.order.bean;
 
+import com.atguigu.product.bean.Product;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -18,5 +19,5 @@ public class Order {
 
     private String address;
 
-    private List<Object> productList;
+    private List<Product> productList;
 }
