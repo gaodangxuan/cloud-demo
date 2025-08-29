@@ -8,6 +8,8 @@ import java.math.BigDecimal;
 
 @Component
 public class ProductFeignClientFallback implements ProductFeignClient {
+
+    // openfeign兜底回调
     @Override
     public Product getProductById(Long id) {
         System.out.println("兜底回调");
