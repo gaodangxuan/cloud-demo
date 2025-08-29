@@ -1,6 +1,7 @@
 package com.atguigu.order.service.impl;
 
 import com.atguigu.order.bean.Order;
+import com.atguigu.order.feign.ProductFeignClient;
 import com.atguigu.order.service.OrderService;
 import com.atguigu.product.bean.Product;
 import lombok.extern.slf4j.Slf4j;
@@ -28,9 +29,14 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     LoadBalancerClient loadBalancerClient;
 
+    @Autowired
+    ProductFeignClient productFeignClient;
+
     @Override
     public Order createOrder(Long productId, Long userId) {
-        Product product = getProductFromRemoteWithLoadBalancerAnnotation(productId);
+        //Product product = getProductFromRemoteWithLoadBalancerAnnotation(productId);
+        Product product = productFeignClient.getProductById(productId);
+
         Order order = new Order();
         order.setId(1L);
         // 总金额
