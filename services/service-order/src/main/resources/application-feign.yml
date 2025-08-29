@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          service-product:
+            connect-timeout: 3000
+            read-timeout: 5000
+            # 拦截器配置在某一个客户端生效
+            request-interceptors:
+              - com.atguigu.order.interceptor.XTokenRequestInterceptor
+
+#开启熔断，要使用回调功能需要搭配熔断器一起使用，否则回调功能不生效
+feign:
+  sentinel:
+    enabled: true
