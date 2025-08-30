@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.PrintWriter;
 
+/**
+ * web接口异常处理，默认是BlockExceptionHandler，如果需要自定义异常，可以实现BlockExceptionHandler
+ */
 @Component
 public class MyBlockException implements BlockExceptionHandler {
 
